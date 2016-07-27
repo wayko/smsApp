@@ -3,30 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <title>CSS Toggle Switch</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type ="test/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"> </script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
-<link rel="stylesheet"  type="text/css" href="style/bootstrap.css" />
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   
 <link rel="stylesheet" type="text/css" href="style/style.css">
  <meta http-equiv="pragma" content="no-cache" />
  <meta http-equiv="expires" content="-1" />
 </head>
 <body>
+<section class="logoarea">
+<img src="img/tcilogo.jpg" alt="TCI COLLEGE OF TECHNOLOGY" />
 <div class="wrapper">
-<nav></nav>
 <section class="togglecss">
 <form action="upload8.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload"><br />
-	<textarea name="messages"></textarea><br/>
-    <input type="submit" value="Upload File" name="submit">
+<!--/ Select Button for CSV File -->
+<div class="col-sm-12 column">
+	 <p class="glyphicon glyphicon-circle-arrow-right"></p><label class="btn btn-danger btn-file">
+	<p class="largerfont">Select CSV File to upload:</p>
+    <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;">
+	</label>
+	</div>
+	<!--/ Message Area -->
+<div class="col-sm-12 column">
+	<span class="brdr glyphicon glyphicon-pencil"><textarea  rows="30"  cols="150" value="" class="form-control" name="messages" placeholder="Enter or paste message here:"></textarea></span>
+	</div>
+	<!--/ Submit Text Message -->
+	<div class="col-sm-12 column">
+    <p class="glyphicon glyphicon-circle-arrow-right"></p><button  class="btn btn-danger" type="submit" name="submit"> <p class="largerfont">Send Text Message</p></button>
+	</div>
 </form>
 
 </section>
 <footer>
 </footer>
 </div>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type ="test/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"> </script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/smsApp.js"></script>
 </body>
 </html>

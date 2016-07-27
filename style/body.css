@@ -2,3 +2,40 @@
 	width:960px;
 	margin:0 auto;
 }
+body{
+background: #fff;
+color: #000;
+
+}
+textarea{
+	margin-top: 10px;
+	font-size: 1.5em;
+}
+.togglecss
+{
+	margin-top: 25px;
+}
+.logoarea
+{
+	margin-left:25px;
+}
+.glyphicon-circle-arrow-right
+{
+	
+	
+	margin-right: 10px;
+}
+.largerfont
+{
+	font-size:1.5em;
+}
+.brdr
+{
+	border:solid 1px red;
+	margin: 10px 0;
+}
+.glyphicon
+{
+color: red;	
+font-size: 2em;
+}
