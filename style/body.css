@@ -39,3 +39,21 @@ textarea{
 color: red;	
 font-size: 2em;
 }
+
+#message{
+	width:960px;
+	height:350px;
+}
+#xtramsg{
+	width:960px;
+	height:175px;
+}
+.subject
+{
+color: red;
+}
+#subjectinput
+{
+	width:960px;
+	height: 30px;
+}

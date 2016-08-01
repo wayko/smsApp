@@ -32,8 +32,8 @@ function csv_to_array($filename, $delimiter)
     'User'          => 'tci',
     'Password'      => 'Tci1ez',
     'PhoneNumbers'  => $fList->Phone_Number,
-    'Subject'       => 'New Reg App',
-    'Message'       => "Dear " . $fList->First_Name . " " . $fList->Last_Name . ", " .$_POST['messages'],
+    'Subject'       => $_POST['subjectinput'],
+    'Message'       => "Dear " . $fList->First_Name . " " . $fList->Last_Name . ", " .$_POST['messages'] . " " . $_POST['xtramsg'],
     'MessageTypeID' => 1
 );
 

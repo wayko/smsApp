@@ -19,5 +19,5 @@ $(document).ready(function(){
 		}
     });  
 	});
-
+	$('#subjectinput').attr("maxlength", 13)
 });
