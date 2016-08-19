@@ -2,7 +2,7 @@
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $uploadOk = 1;
@@ -11,6 +11,7 @@ if(isset($_POST["submit"])) {
 function csv_to_array($filename, $delimiter)
 {
 	 if (($handle = fopen($filename, 'r')) === false) {
+		
         die('Error opening file');
     }
 	$headers = fgetcsv($handle, 4000, $delimiter);
@@ -18,6 +19,7 @@ function csv_to_array($filename, $delimiter)
 
     while ($row = fgetcsv($handle, 4000, $delimiter)) {
       $csv2json[] = array_combine($headers, $row);
+	 
     }
 
     fclose($handle);
@@ -27,13 +29,50 @@ function csv_to_array($filename, $delimiter)
   foreach($fullList as $fList)
   {
   //eztexting section
+  $mobileNumber = $fList->MOBILENUMBER;
+  $phoneNumber = $fList->PHONE;
+  $workNumber = $fList->WORKPHONE;
+  $otherNumber = $fList->OTHERPHONE;
+
   
+  if($mobileNumber == "" || $mobileNumber == NULL)
+  {
+	if($otherNumber == "" || $otherNumber == NULL)
+	{
+		if($workNumber == "" || $workNumber == NULL)
+		{
+			if($phoneNumber == "" || $phoneNumber == NULL)
+			{
+				echo("No Number Attached");
+			}
+			else
+			{
+				$cellNumber = $phoneNumber;
+			}
+		}
+		else
+		{
+			$cellNumber = $workNumber;
+		}
+	}
+	else
+	{
+		$cellNumber = $otherNumber;
+	}
+  }
+  else
+  {
+	  $cellNumber = $mobileNumber;
+  }
+  $phone = preg_replace('/\D+/', '', $cellNumber);
+  
+  var_dump($phone);
   $data = array(
     'User'          => 'tci',
-    'Password'      => 'Tci1ez',
-    'PhoneNumbers'  => $fList->Phone_Number,
+    'Password'      => 'Tciez1',
+    'PhoneNumbers'  => $phone,
     'Subject'       => $_POST['subjectinput'],
-    'Message'       => "Dear " . $fList->First_Name . " " . $fList->Last_Name . ", " .$_POST['messages'] . " " . $_POST['xtramsg'],
+    'Message'       => "Dear " . $fList->FIRSTNAME . " " . $fList->LASTNAME . ", " .$_POST['messages'] . " " . $_POST['xtramsg'],
     'MessageTypeID' => 1
 );
 
@@ -57,7 +96,7 @@ if ( 'Failure' == $json->Status ) {
     }
 
     echo 'Status: ' . $json->Status . "\n" .
-         'Errors: ' . implode(', ' , $errors) . "\n";
+         'Errors From Extexting: ' . implode(', ' , $errors) . "\n";
 } else {
     $phoneNumbers = array();
     if ( !empty($json->Entry->PhoneNumbers) ) {
@@ -108,8 +147,8 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
     $uploadOk = 0;
 }
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" && $imageFileType != "csv" ) {
+if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
+&& $fileType != "gif" && $fileType != "csv" ) {
     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
     $uploadOk = 0;
 }
