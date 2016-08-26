@@ -32,6 +32,7 @@ function csv_to_array($filename, $delimiter)
   
   foreach($fullList as $fList)
   {
+	  var_dump($fList);
   //eztexting section
   $mobileNumber = $fList->MOBILENUMBER;
   $phoneNumber = $fList->PHONE;
@@ -70,7 +71,7 @@ function csv_to_array($filename, $delimiter)
   }
   $phone = preg_replace('/\D+/', '', $cellNumber);
   
-  var_dump($phone);
+  
   $data = array(
     'User'          => 'tci',
     'Password'      => 'Tciez1',
