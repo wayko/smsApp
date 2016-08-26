@@ -15,11 +15,15 @@ function csv_to_array($filename, $delimiter)
         die('Error opening file');
     }
 	$headers = fgetcsv($handle, 4000, $delimiter);
+    foreach($headers as $upperHeader)
+	{
+	  $headerFinal[] = strtoupper($upperHeader);
+	}
+	
     $csv2json = array();
 
     while ($row = fgetcsv($handle, 4000, $delimiter)) {
-      $csv2json[] = array_combine($headers, $row);
-	 
+      $csv2json[] = array_combine($headerFinal, $row);
     }
 
     fclose($handle);
